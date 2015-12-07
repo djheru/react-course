@@ -4,17 +4,24 @@ var React = require('react');
 var Router = require('react-router');
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
+var NotFoundRoute = Router.NotFoundRoute;
+var Redirect = Router.Redirect;
 
 var App = require('./components/App');
 var HomePage = require('./components/HomePage');
-var About = require('./components/about/AboutPage');
-var Authors = require('./components/authors/AuthorPage');
+var AboutPage = require('./components/about/AboutPage');
+var AuthorPage = require('./components/authors/AuthorPage');
+var NotFoundPage = require('./components/NotFoundPage');
 
 var routes = (
   <Route name="app" path="/" handler={App}>
     <DefaultRoute handler={HomePage} />
-    <Route name="authors" handler={Authors} />
-    <Route name="about" handler={About} />
+    <Route name="authors" handler={AuthorPage} />
+    <Route name="about" handler={AboutPage} />
+    <NotFoundRoute handler={NotFoundPage} />
+    <Redirect from="about-us" to="about" />
+    <Redirect from="authrus" to="authors" />
+    <Redirect from="about/*" to="about" />
   </Route>
 );
 

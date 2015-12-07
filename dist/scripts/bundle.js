@@ -41452,7 +41452,7 @@ module.exports = {
 
 var React = require('react');
 
-var Home = React.createClass({displayName: "Home",
+var HomePage = React.createClass({displayName: "HomePage",
   render: function () {
     return (
       React.createElement("div", {className: "jumbotron"}, 
@@ -41463,7 +41463,7 @@ var Home = React.createClass({displayName: "Home",
   }
 });
 
-module.exports = Home;
+module.exports = HomePage;
 
 },{"react":158}],162:[function(require,module,exports){
 var React = require('react');
@@ -41496,6 +41496,10 @@ module.exports = About;
 
 var React = require('react');
 var AuthorList = React.createClass({displayName: "AuthorList",
+
+  propTypes: {
+    authors: React.PropTypes.array.isRequired
+  },
 
   render: function () {
     var createAuthorRow = function (author) {
@@ -41534,7 +41538,7 @@ var React = require('react');
 var AuthorApi = require('./../../api/authorApi');
 var AuthorList = require('./AuthorList');
 
-var Authors = React.createClass({displayName: "Authors",
+var AuthorPage = React.createClass({displayName: "AuthorPage",
 
   getInitialState: function () {
     return {
@@ -41559,7 +41563,7 @@ var Authors = React.createClass({displayName: "Authors",
   }
 });
 
-module.exports = Authors;
+module.exports = AuthorPage;
 
 },{"./../../api/authorApi":159,"./AuthorList":163,"react":158}],165:[function(require,module,exports){
 "use strict"
@@ -41590,10 +41594,10 @@ module.exports = Header;
 },{"react":158}],166:[function(require,module,exports){
 $ = jQuery = require('jquery');
 var React = require('react');
-var Home = require('./components/Home');
-var About = require('./components/about/About');
+var HomePage = require('./components/HomePage');
+var AboutPage = require('./components/about/AboutPage');
 var Header = require('./components/common/Header');
-var Authors = require('./components/authors/Authors');
+var AuthorPage = require('./components/authors/AuthorPage');
 
 (function (win) {
   "use strict"
@@ -41603,13 +41607,13 @@ var Authors = require('./components/authors/Authors');
       var Child;
       switch(this.props.route) {
         case 'about':
-          Child = About;
+          Child = AboutPage;
           break;
         case 'authors':
-          Child = Authors;
+          Child = AuthorPage;
           break;
         default:
-          Child = Home;
+          Child = HomePage;
       }
 
       return (
@@ -41631,4 +41635,4 @@ var Authors = require('./components/authors/Authors');
 
 })(window);
 
-},{"./components/Home":161,"./components/about/About":162,"./components/authors/Authors":164,"./components/common/Header":165,"jquery":2,"react":158}]},{},[166]);
+},{"./components/HomePage":161,"./components/about/AboutPage":162,"./components/authors/AuthorPage":164,"./components/common/Header":165,"jquery":2,"react":158}]},{},[166]);

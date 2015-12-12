@@ -19,6 +19,7 @@ var routes = (
     <DefaultRoute handler={HomePage} />
     <Route name="authors" handler={AuthorPage} />
     <Route name="addAuthor" path="author" handler={ManageAuthorPage} />
+    <Route name="editAuthor" path="author/:id" handler={ManageAuthorPage} />
     <Route name="about" handler={AboutPage} />
     <NotFoundRoute handler={NotFoundPage} />
     <Redirect from="about-us" to="about" />

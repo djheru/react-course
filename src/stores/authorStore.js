@@ -44,7 +44,14 @@ Dispatcher.register(function (action) {
     case ActionTypes.UPDATE_AUTHOR:
       var existingAuthor = _.find(_authors, {id: action.author.id});
       var existingAuthorIndex = _.indexOf(_authors, existingAuthor);
-      _authors.splice(ExistingAuthorIndex, 1, action.author);
+      _authors.splice(existingAuthorIndex, 1, action.author);
+      AuthorStore.emitChange();
+      break;
+
+    case ActionTypes.DELETE_AUTHOR:
+      _.remove(_authors, function(author) {
+        return action.authorId === author.id;
+      });
       AuthorStore.emitChange();
       break;
 
